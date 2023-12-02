@@ -19,11 +19,10 @@ numbers = list(map_numbers.values())
 def get_test_input() -> list[str]:
   return ['two1nine', 'eightwothree', 'abcone2threexyz', 'xtwone3four', '4nineeightseven2', 'zoneight234', '7pqrstsixteen']
 
+# Unnecessary function, but I wanted to try it out
 def contains_number(line: str) -> bool:
-  for written_number in written_numbers:
-    if written_number in line:
-      return True
-  return False
+    return any(written_number in line for written_number in written_numbers)
+
 
 def get_number(line: str, start: int, direction: str = 'left') -> str:
     """Returns the first number or written number in a window of the line based on the direction"""
@@ -56,14 +55,13 @@ def get_code(line) -> str:
 
 def get_puzzle_input() -> str:
   with open('./day-1/input-exercise-1.txt', 'r') as file:
-    return file.read()
+    return file.read().strip()
 
 
 if __name__ == '__main__':
   # lines: list[str] = get_test_input()
 
   lines: list[str] = get_puzzle_input().split('\n')
-  lines.remove('') if '' in lines else None
   codes = []
   for line in lines:
     code = get_code(line)
