@@ -6,6 +6,9 @@ class Handful:
   green: int
   red: int
 
+  def __str__(self) -> str:
+    return f'blue: {self.blue}, green: {self.green}, red: {self.red}'
+
 @dataclass
 class Result:
   handfuls: list[Handful]
